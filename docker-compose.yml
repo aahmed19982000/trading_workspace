@@ -1,0 +1,45 @@
+services:
+  # 1. قاعدة البيانات
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - "POSTGRES_USER=django_user"
+      - "POSTGRES_PASSWORD=django_pass"
+      - "POSTGRES_DB=trading_db"
+    ports:
+      - "5432:5432"
+
+  # 2. محرك Redis
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  # 3. تطبيق Django (الخدمة المفقودة)
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+
+  # 4. عامل Celery (لتنفيذ صفقات التداول في الخلفية)
+  worker:
+    build: .
+    command: celery -A core worker --loglevel=info
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+
+volumes:
+  postgres_data:
