@@ -8,31 +8,100 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0001_initial'),
+        ("users", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='customuser',
-            name='timezone',
-            field=models.CharField(default='UTC', max_length=64, verbose_name='المنطقة الزمنية'),
+            model_name="customuser",
+            name="timezone",
+            field=models.CharField(
+                default="UTC", max_length=64, verbose_name="المنطقة الزمنية"
+            ),
         ),
         migrations.CreateModel(
-            name='UserProfile',
+            name="UserProfile",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('trading_goal', models.CharField(blank=True, max_length=255, verbose_name='الهدف التداولي')),
-                ('experience_level', models.CharField(choices=[('beginner', 'مبتدئ'), ('intermediate', 'متوسط'), ('advanced', 'متقدم'), ('professional', 'محترف')], default='beginner', max_length=20, verbose_name='مستوى الخبرة')),
-                ('preferred_market', models.CharField(choices=[('forex', 'فوركس'), ('stocks', 'أسهم'), ('crypto', 'عملات رقمية'), ('commodities', 'سلع'), ('indices', 'مؤشرات'), ('mixed', 'متنوع')], default='mixed', max_length=20, verbose_name='السوق المفضل')),
-                ('risk_appetite', models.CharField(blank=True, max_length=20, verbose_name='شهية المخاطرة')),
-                ('onboarding_completed', models.BooleanField(default=False, verbose_name='اكتمل الإعداد الأولي')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='تاريخ الإنشاء')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='تاريخ التحديث')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='profile', to=settings.AUTH_USER_MODEL, verbose_name='المستخدم')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "trading_goal",
+                    models.CharField(
+                        blank=True, max_length=255, verbose_name="الهدف التداولي"
+                    ),
+                ),
+                (
+                    "experience_level",
+                    models.CharField(
+                        choices=[
+                            ("beginner", "مبتدئ"),
+                            ("intermediate", "متوسط"),
+                            ("advanced", "متقدم"),
+                            ("professional", "محترف"),
+                        ],
+                        default="beginner",
+                        max_length=20,
+                        verbose_name="مستوى الخبرة",
+                    ),
+                ),
+                (
+                    "preferred_market",
+                    models.CharField(
+                        choices=[
+                            ("forex", "فوركس"),
+                            ("stocks", "أسهم"),
+                            ("crypto", "عملات رقمية"),
+                            ("commodities", "سلع"),
+                            ("indices", "مؤشرات"),
+                            ("mixed", "متنوع"),
+                        ],
+                        default="mixed",
+                        max_length=20,
+                        verbose_name="السوق المفضل",
+                    ),
+                ),
+                (
+                    "risk_appetite",
+                    models.CharField(
+                        blank=True, max_length=20, verbose_name="شهية المخاطرة"
+                    ),
+                ),
+                (
+                    "onboarding_completed",
+                    models.BooleanField(
+                        default=False, verbose_name="اكتمل الإعداد الأولي"
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="تاريخ الإنشاء"
+                    ),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="تاريخ التحديث"),
+                ),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="profile",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="المستخدم",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'ملف المستخدم',
-                'verbose_name_plural': 'ملفات المستخدمين',
+                "verbose_name": "ملف المستخدم",
+                "verbose_name_plural": "ملفات المستخدمين",
             },
         ),
     ]

@@ -10,31 +10,113 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('strategies', '0001_initial'),
-        ('trading', '0001_initial'),
+        ("strategies", "0001_initial"),
+        ("trading", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='AIAnalysis',
+            name="AIAnalysis",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('analysis_type', models.CharField(choices=[('strategy', 'تحليل استراتيجية'), ('risk', 'تحليل مخاطر'), ('performance', 'تحليل أداء'), ('market', 'تحليل سوق')], default='strategy', max_length=20, verbose_name='نوع التحليل')),
-                ('prompt', models.TextField(verbose_name='الطلب المرسل للذكاء الاصطناعي')),
-                ('analysis_result', models.JSONField(blank=True, default=dict, verbose_name='نتيجة التحليل')),
-                ('confidence_score', models.DecimalField(decimal_places=2, default=0, max_digits=5, verbose_name='درجة الثقة')),
-                ('risk_score', models.DecimalField(decimal_places=2, default=0, max_digits=5, verbose_name='درجة المخاطرة')),
-                ('recommendations', models.JSONField(blank=True, default=list, verbose_name='التوصيات')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='تاريخ الإنشاء')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='تاريخ التحديث')),
-                ('strategy', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='ai_analyses', to='strategies.strategy', verbose_name='الاستراتيجية')),
-                ('trading_account', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='ai_analyses', to='trading.tradingaccount', verbose_name='حساب التداول')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='ai_analyses', to=settings.AUTH_USER_MODEL, verbose_name='المستخدم')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "analysis_type",
+                    models.CharField(
+                        choices=[
+                            ("strategy", "تحليل استراتيجية"),
+                            ("risk", "تحليل مخاطر"),
+                            ("performance", "تحليل أداء"),
+                            ("market", "تحليل سوق"),
+                        ],
+                        default="strategy",
+                        max_length=20,
+                        verbose_name="نوع التحليل",
+                    ),
+                ),
+                (
+                    "prompt",
+                    models.TextField(verbose_name="الطلب المرسل للذكاء الاصطناعي"),
+                ),
+                (
+                    "analysis_result",
+                    models.JSONField(
+                        blank=True, default=dict, verbose_name="نتيجة التحليل"
+                    ),
+                ),
+                (
+                    "confidence_score",
+                    models.DecimalField(
+                        decimal_places=2,
+                        default=0,
+                        max_digits=5,
+                        verbose_name="درجة الثقة",
+                    ),
+                ),
+                (
+                    "risk_score",
+                    models.DecimalField(
+                        decimal_places=2,
+                        default=0,
+                        max_digits=5,
+                        verbose_name="درجة المخاطرة",
+                    ),
+                ),
+                (
+                    "recommendations",
+                    models.JSONField(blank=True, default=list, verbose_name="التوصيات"),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="تاريخ الإنشاء"
+                    ),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="تاريخ التحديث"),
+                ),
+                (
+                    "strategy",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="ai_analyses",
+                        to="strategies.strategy",
+                        verbose_name="الاستراتيجية",
+                    ),
+                ),
+                (
+                    "trading_account",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="ai_analyses",
+                        to="trading.tradingaccount",
+                        verbose_name="حساب التداول",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="ai_analyses",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="المستخدم",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'تحليل ذكاء اصطناعي',
-                'verbose_name_plural': 'تحليلات الذكاء الاصطناعي',
+                "verbose_name": "تحليل ذكاء اصطناعي",
+                "verbose_name_plural": "تحليلات الذكاء الاصطناعي",
             },
         ),
     ]

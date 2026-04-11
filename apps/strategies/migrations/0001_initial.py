@@ -15,62 +15,211 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Strategy',
+            name="Strategy",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200, verbose_name='العنوان')),
-                ('description', models.TextField(blank=True, verbose_name='الوصف')),
-                ('market', models.CharField(blank=True, max_length=50, verbose_name='السوق')),
-                ('timeframe', models.CharField(max_length=20, verbose_name='الإطار الزمني')),
-                ('entry_rules', models.JSONField(blank=True, default=dict, verbose_name='قواعد الدخول')),
-                ('exit_rules', models.JSONField(blank=True, default=dict, verbose_name='قواعد الخروج')),
-                ('indicators', models.JSONField(blank=True, default=list, verbose_name='المؤشرات')),
-                ('status', models.CharField(choices=[('draft', 'مسودة'), ('active', 'نشطة'), ('archived', 'مؤرشفة')], default='draft', max_length=20, verbose_name='الحالة')),
-                ('version', models.PositiveIntegerField(default=1, verbose_name='الإصدار الحالي')),
-                ('is_public', models.BooleanField(default=False, verbose_name='متاحة للجميع')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='تاريخ الإنشاء')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='تاريخ التحديث')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='strategies', to=settings.AUTH_USER_MODEL, verbose_name='المستخدم')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=200, verbose_name="العنوان")),
+                ("description", models.TextField(blank=True, verbose_name="الوصف")),
+                (
+                    "market",
+                    models.CharField(blank=True, max_length=50, verbose_name="السوق"),
+                ),
+                (
+                    "timeframe",
+                    models.CharField(max_length=20, verbose_name="الإطار الزمني"),
+                ),
+                (
+                    "entry_rules",
+                    models.JSONField(
+                        blank=True, default=dict, verbose_name="قواعد الدخول"
+                    ),
+                ),
+                (
+                    "exit_rules",
+                    models.JSONField(
+                        blank=True, default=dict, verbose_name="قواعد الخروج"
+                    ),
+                ),
+                (
+                    "indicators",
+                    models.JSONField(blank=True, default=list, verbose_name="المؤشرات"),
+                ),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("draft", "مسودة"),
+                            ("active", "نشطة"),
+                            ("archived", "مؤرشفة"),
+                        ],
+                        default="draft",
+                        max_length=20,
+                        verbose_name="الحالة",
+                    ),
+                ),
+                (
+                    "version",
+                    models.PositiveIntegerField(
+                        default=1, verbose_name="الإصدار الحالي"
+                    ),
+                ),
+                (
+                    "is_public",
+                    models.BooleanField(default=False, verbose_name="متاحة للجميع"),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="تاريخ الإنشاء"
+                    ),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="تاريخ التحديث"),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="strategies",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="المستخدم",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'استراتيجية',
-                'verbose_name_plural': 'الاستراتيجيات',
+                "verbose_name": "استراتيجية",
+                "verbose_name_plural": "الاستراتيجيات",
             },
         ),
         migrations.CreateModel(
-            name='StrategyTemplate',
+            name="StrategyTemplate",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='اسم القالب')),
-                ('category', models.CharField(choices=[('scalping', 'سكالبينج'), ('day_trading', 'تداول يومي'), ('swing', 'سوينج'), ('position', 'مركزي'), ('custom', 'مخصص')], default='custom', max_length=30, verbose_name='الفئة')),
-                ('description', models.TextField(blank=True, verbose_name='الوصف')),
-                ('template_data', models.JSONField(blank=True, default=dict, verbose_name='بيانات القالب')),
-                ('is_public', models.BooleanField(default=False, verbose_name='قالب عام')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='تاريخ الإنشاء')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='تاريخ التحديث')),
-                ('user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='strategy_templates', to=settings.AUTH_USER_MODEL, verbose_name='المستخدم')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, verbose_name="اسم القالب")),
+                (
+                    "category",
+                    models.CharField(
+                        choices=[
+                            ("scalping", "سكالبينج"),
+                            ("day_trading", "تداول يومي"),
+                            ("swing", "سوينج"),
+                            ("position", "مركزي"),
+                            ("custom", "مخصص"),
+                        ],
+                        default="custom",
+                        max_length=30,
+                        verbose_name="الفئة",
+                    ),
+                ),
+                ("description", models.TextField(blank=True, verbose_name="الوصف")),
+                (
+                    "template_data",
+                    models.JSONField(
+                        blank=True, default=dict, verbose_name="بيانات القالب"
+                    ),
+                ),
+                (
+                    "is_public",
+                    models.BooleanField(default=False, verbose_name="قالب عام"),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="تاريخ الإنشاء"
+                    ),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="تاريخ التحديث"),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="strategy_templates",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="المستخدم",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'قالب استراتيجية',
-                'verbose_name_plural': 'قوالب الاستراتيجيات',
+                "verbose_name": "قالب استراتيجية",
+                "verbose_name_plural": "قوالب الاستراتيجيات",
             },
         ),
         migrations.CreateModel(
-            name='StrategyVersion',
+            name="StrategyVersion",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('version_number', models.PositiveIntegerField(verbose_name='رقم الإصدار')),
-                ('title_snapshot', models.CharField(max_length=200, verbose_name='عنوان الإصدار')),
-                ('description_snapshot', models.TextField(blank=True, verbose_name='وصف الإصدار')),
-                ('rules_snapshot', models.JSONField(blank=True, default=dict, verbose_name='نسخة القواعد')),
-                ('change_notes', models.TextField(blank=True, verbose_name='ملاحظات التغيير')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='تاريخ الإنشاء')),
-                ('strategy', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='versions', to='strategies.strategy', verbose_name='الاستراتيجية')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "version_number",
+                    models.PositiveIntegerField(verbose_name="رقم الإصدار"),
+                ),
+                (
+                    "title_snapshot",
+                    models.CharField(max_length=200, verbose_name="عنوان الإصدار"),
+                ),
+                (
+                    "description_snapshot",
+                    models.TextField(blank=True, verbose_name="وصف الإصدار"),
+                ),
+                (
+                    "rules_snapshot",
+                    models.JSONField(
+                        blank=True, default=dict, verbose_name="نسخة القواعد"
+                    ),
+                ),
+                (
+                    "change_notes",
+                    models.TextField(blank=True, verbose_name="ملاحظات التغيير"),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="تاريخ الإنشاء"
+                    ),
+                ),
+                (
+                    "strategy",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="versions",
+                        to="strategies.strategy",
+                        verbose_name="الاستراتيجية",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'إصدار استراتيجية',
-                'verbose_name_plural': 'إصدارات الاستراتيجيات',
-                'unique_together': {('strategy', 'version_number')},
+                "verbose_name": "إصدار استراتيجية",
+                "verbose_name_plural": "إصدارات الاستراتيجيات",
+                "unique_together": {("strategy", "version_number")},
             },
         ),
     ]
