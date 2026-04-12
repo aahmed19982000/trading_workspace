@@ -11,6 +11,7 @@ WORKDIR /app
 # تثبيت التبعيات الضرورية للنظام (لربط PostgreSQL)
 RUN apt-get update && apt-get install -y \
     build-essential \
+    gettext \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 

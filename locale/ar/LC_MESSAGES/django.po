@@ -1,0 +1,73 @@
+# Arabic translations for Sovereign Ledger.
+msgid ""
+msgstr ""
+    "Content-Type: text/plain; charset=UTF-8\n"
+    "Content-Transfer-Encoding: 8bit\n"
+    "Language: ar\n"
+    "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+
+msgid "Sign In"
+msgstr "تسجيل الدخول"
+
+msgid "Email Address"
+msgstr "البريد الإلكتروني"
+
+msgid "Password"
+msgstr "كلمة المرور"
+
+msgid "Forgot Password?"
+msgstr "نسيت كلمة المرور؟"
+
+msgid "Authenticating..."
+msgstr "جارٍ التحقق..."
+
+msgid "New to the platform?"
+msgstr "مستخدم جديد؟"
+
+msgid "Create Account"
+msgstr "إنشاء حساب"
+
+msgid "Invalid credentials. Please verify your email and password."
+msgstr "بيانات غير صحيحة. يرجى التحقق من البريد الإلكتروني وكلمة المرور."
+
+msgid "Institutional Grade Trading Workspace"
+msgstr "بيئة تداول مؤسسية متكاملة"
+
+msgid "Access your terminal and market analysis."
+msgstr "ادخل إلى منصتك وتحليلات السوق."
+
+msgid "Market Status"
+msgstr "حالة السوق"
+
+msgid "Live"
+msgstr "مباشر"
+
+msgid "Global Liquidity Index"
+msgstr "مؤشر السيولة العالمية"
+
+msgid "Precision-engineered for the modern quant."
+msgstr "مصمم بدقة للمتداول المؤسسي الحديث."
+
+msgid ""
+"\n"
+"            Experience a trading environment where data clarity meets\n"
+"            architectural elegance. Execute trades with absolute certainty in a\n"
+"            workspace built for institutional performance.\n"
+"            "
+msgstr ""
+"\n"
+"            اختبر بيئة تداول تجمع بين وضوح البيانات والأناقة المعمارية.\n"
+"            نفّذ صفقاتك بثقة تامة في منصة مبنية للأداء المؤسسي.\n"
+"            "
+
+msgid "AES-256 Encrypted"
+msgstr "مشفّر بـ AES-256"
+
+msgid "Low-Latency Mesh"
+msgstr "شبكة منخفضة الكمون"
+
+msgid "Security"
+msgstr "الأمان"
+
+msgid "Privacy"
+msgstr "الخصوصية"

@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 17:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: core/settings/base.py:147
+msgid "English"
+msgstr ""
+
+#: core/settings/base.py:148
+msgid "Arabic"
+msgstr ""
+
+#: templates/auth/login.html:7 templates/auth/login.html:26
+#: templates/auth/login.html:83
+msgid "Sovereign Ledger"
+msgstr ""
+
+#: templates/auth/login.html:7 templates/auth/login.html:31
+#: templates/auth/login.html:70
+msgid "Sign In"
+msgstr ""
+
+#: templates/auth/login.html:27
+msgid "Institutional Grade Trading Workspace"
+msgstr ""
+
+#: templates/auth/login.html:32
+msgid "Access your terminal and market analysis."
+msgstr ""
+
+#: templates/auth/login.html:38
+msgid "Invalid credentials. Please verify your email and password."
+msgstr ""
+
+#: templates/auth/login.html:44
+msgid "Email Address"
+msgstr ""
+
+#: templates/auth/login.html:49
+msgid "name@firm.com"
+msgstr ""
+
+#: templates/auth/login.html:53
+msgid "Password"
+msgstr ""
+
+#: templates/auth/login.html:54
+msgid "Forgot Password?"
+msgstr ""
+
+#: templates/auth/login.html:64
+msgid "Toggle password visibility"
+msgstr ""
+
+#: templates/auth/login.html:73
+msgid "Authenticating..."
+msgstr ""
+
+#: templates/auth/login.html:78
+msgid "New to the platform?"
+msgstr ""
+
+#: templates/auth/login.html:79
+msgid "Create Account"
+msgstr ""
+
+#: templates/auth/login.html:85
+msgid "Security"
+msgstr ""
+
+#: templates/auth/login.html:86
+msgid "Privacy"
+msgstr ""
+
+#: templates/auth/login.html:95
+msgid "Market Status"
+msgstr ""
+
+#: templates/auth/login.html:96
+msgid "Live"
+msgstr ""
+
+#: templates/auth/login.html:98
+msgid "Global Liquidity Index"
+msgstr ""
+
+#: templates/auth/login.html:104
+msgid "Precision-engineered for the modern quant."
+msgstr ""
+
+#: templates/auth/login.html:106
+msgid ""
+"\n"
+"            Experience a trading environment where data clarity meets\n"
+"            architectural elegance. Execute trades with absolute certainty "
+"in a\n"
+"            workspace built for institutional performance.\n"
+"            "
+msgstr ""
+
+#: templates/auth/login.html:115
+msgid "AES-256 Encrypted"
+msgstr ""
+
+#: templates/auth/login.html:116
+msgid "Low-Latency Mesh"
+msgstr ""

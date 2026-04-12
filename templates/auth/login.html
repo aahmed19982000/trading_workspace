@@ -1,0 +1,181 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% trans "Sovereign Ledger" %} | {% trans "Sign In" %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  </head>
+  <body class="{% if LANGUAGE_BIDI %}is-rtl{% else %}is-ltr{% endif %}">
+    <main class="login-shell">
+      <section class="login-panel">
+        <div class="language-switcher">
+          <a href="/login/?lang=en">EN</a>
+          <span>/</span>
+          <a href="/login/?lang=ar">AR</a>
+        </div>
+
+        <div class="brand-block">
+          <h1>{% trans "Sovereign Ledger" %}</h1>
+          <p>{% trans "Institutional Grade Trading Workspace" %}</p>
+        </div>
+
+        <div class="form-copy">
+          <h2>{% trans "Sign In" %}</h2>
+          <p>{% trans "Access your terminal and market analysis." %}</p>
+        </div>
+
+        <!-- ✅ مخفي افتراضياً -->
+        <div class="alert-box" id="alert-box" role="alert" style="display: none;">
+          <span class="alert-icon">!</span>
+          <span>
+            {% trans "Invalid credentials. Please verify your email and password." %}
+          </span>
+        </div>
+
+        <form class="login-form" method="POST" action="{% url 'token_obtain_pair' %}" id="login-form">
+          {% csrf_token %}
+          <label for="email">{% trans "Email Address" %}</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="{% trans 'name@firm.com' %}"
+          />
+
+          <div class="password-heading">
+            <label for="password">{% trans "Password" %}</label>
+            <a href="#">{% trans "Forgot Password?" %}</a>
+          </div>
+          <div class="password-field">
+            <input
+              id="password"
+              name="password"
+              type="password"
+            />
+            <!-- ✅ toggle كلمة المرور -->
+            <button
+              type="button"
+              id="toggle-password"
+              aria-label="{% trans 'Toggle password visibility' %}"
+            >
+              <span class="eye" id="eye-icon"></span>
+            </button>
+          </div>
+
+          <button type="submit" class="primary-btn">{% trans "Sign In" %}</button>
+          <button type="button" class="secondary-btn" id="loading-btn" style="display: none;">
+            <span class="spinner"></span>
+            {% trans "Authenticating..." %}
+          </button>
+        </form>
+
+        <p class="create-account">
+          {% trans "New to the platform?" %}
+          <a href="#">{% trans "Create Account" %}</a>
+        </p>
+
+        <footer class="panel-footer">
+          <span>&copy; 2024 {% trans "Sovereign Ledger" %}</span>
+          <nav>
+            <a href="#">{% trans "Security" %}</a>
+            <a href="#">{% trans "Privacy" %}</a>
+          </nav>
+        </footer>
+      </section>
+
+      <section class="hero-panel">
+        <div class="hero-overlay"></div>
+        <div class="market-card">
+          <div class="market-header">
+            <span>{% trans "Market Status" %}</span>
+            <span class="live-pill">{% trans "Live" %}</span>
+          </div>
+          <p>{% trans "Global Liquidity Index" %}</p>
+          <strong>482.91M</strong>
+          <div class="market-bar"></div>
+        </div>
+
+        <div class="hero-copy">
+          <h3>{% trans "Precision-engineered for the modern quant." %}</h3>
+          <p>
+            {% blocktrans %}
+            Experience a trading environment where data clarity meets
+            architectural elegance. Execute trades with absolute certainty in a
+            workspace built for institutional performance.
+            {% endblocktrans %}
+          </p>
+        </div>
+
+        <div class="hero-meta">
+          <span>{% trans "AES-256 Encrypted" %}</span>
+          <span>{% trans "Low-Latency Mesh" %}</span>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // toggle كلمة المرور
+      const toggleBtn = document.getElementById('toggle-password');
+      const passwordInput = document.getElementById('password');
+
+      toggleBtn.addEventListener('click', function () {
+        const isPassword = passwordInput.type === 'password';
+        passwordInput.type = isPassword ? 'text' : 'password';
+      });
+
+      // إرسال الفورم عبر fetch وإظهار الخطأ عند الفشل
+      const form = document.getElementById('login-form');
+      const alertBox = document.getElementById('alert-box');
+      const submitBtn = form.querySelector('.primary-btn');
+      const loadingBtn = document.getElementById('loading-btn');
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        alertBox.style.display = 'none';
+        submitBtn.style.display = 'none';
+        loadingBtn.style.display = '';
+
+        const formData = new FormData(form);
+        const data = {
+          email: formData.get('email'),
+          password: formData.get('password'),
+        };
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': formData.get('csrfmiddlewaretoken'),
+            },
+            body: JSON.stringify(data),
+          });
+
+          if (response.ok) {
+            const result = await response.json();
+            // احفظ الـ tokens
+            localStorage.setItem('access', result.access);
+            localStorage.setItem('refresh', result.refresh);
+            // انتقل للصفحة الرئيسية
+            window.location.href = '/dashboard/';
+          } else {
+            alertBox.style.display = '';
+          }
+        } catch (err) {
+          alertBox.style.display = '';
+        } finally {
+          submitBtn.style.display = '';
+          loadingBtn.style.display = 'none';
+        }
+      });
+    </script>
+  </body>
+</html>

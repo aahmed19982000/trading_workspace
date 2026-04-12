@@ -2,31 +2,23 @@ import os
 import sys
 from pathlib import Path
 import environ
+from datetime import timedelta
+from django.utils.translation import gettext_lazy as _
 
-# 1. إعداد مسارات المشروع (Base Directory)
+# 1. مسارات المشروع
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-
-# إضافة مجلد apps إلى مسار البحث لضمان رؤية التطبيقات داخل Docker
 sys.path.insert(0, os.path.join(BASE_DIR, "apps"))
 
-# 2. إعداد المتغيرات البيئية
-env = environ.Env(
-    DEBUG=(bool, True),
-)
-
-# قراءة ملف .env
+# 2. المتغيرات البيئية
+env = environ.Env(DEBUG=(bool, True))
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 # 3. الإعدادات الأساسية
 SECRET_KEY = env("SECRET_KEY", default="django-insecure-your-key-here")
-
-# حل مشكلة الصورة: إجبار DEBUG على True لضمان عمل بيئة التطوير
 DEBUG = True
-
-# السماح لجميع المضيفين (لحل خطأ CommandError: You must set settings.ALLOWED_HOSTS)
 ALLOWED_HOSTS = ["*", "localhost", "127.0.0.1", "web"]
 
-# 4. تعريف التطبيقات (Apps)
+# 4. التطبيقات
 DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -52,11 +44,12 @@ LOCAL_APPS = [
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
-# 5. برمجيات الوسيط (Middleware)
+# 5. Middleware
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -66,7 +59,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "core.urls"
 
-# 6. إعدادات القوالب
+# 6. القوالب
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -78,6 +71,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.i18n",
             ],
         },
     },
@@ -85,7 +79,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "core.wsgi.application"
 
-# 7. قاعدة البيانات (PostgreSQL)
+# 7. قاعدة البيانات
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -97,7 +91,7 @@ DATABASES = {
     }
 }
 
-# 8. إعدادات Redis والكاش
+# 8. Redis والكاش
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
@@ -108,14 +102,14 @@ CACHES = {
     }
 }
 
-# 9. إعدادات Celery
+# 9. Celery
 CELERY_BROKER_URL = env("REDIS_URL", default="redis://redis:6379/1")
 CELERY_RESULT_BACKEND = env("REDIS_URL", default="redis://redis:6379/1")
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 
-# 10. إعدادات المستخدم المخصص (بالغة الأهمية)
+# 10. المستخدم المخصص
 AUTH_USER_MODEL = "users.CustomUser"
 
 # 11. قوة كلمة المرور
@@ -131,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-# 12. إعدادات REST Framework و JWT
+# 12. REST Framework
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
@@ -142,14 +136,19 @@ REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
 }
 
-# 13. إعدادات CORS
+# 13. CORS
 CORS_ALLOWED_ORIGINS = env.list(
     "CORS_ALLOWED_ORIGINS", default=["http://localhost:3000"]
 )
 CORS_ALLOW_CREDENTIALS = True
 
-# 14. إعدادات اللغة والتوقيت
+# 14. اللغة والتوقيت
 LANGUAGE_CODE = "ar"
+LANGUAGES = [
+    ("en", _("English")),
+    ("ar", _("Arabic")),
+]
+LOCALE_PATHS = [os.path.join(BASE_DIR, "locale")]
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
@@ -162,8 +161,17 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 MEDIA_URL = "media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-# 16. إعدادات الأمان والتداول
+# 16. الأمان
 FERNET_KEY = env("FERNET_KEY", default="")
 GEMINI_API_KEY = env("GEMINI_API_KEY", default="")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# 17. JWT
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ROTATE_REFRESH_TOKENS": False,
+    "BLACKLIST_AFTER_ROTATION": False,
+    "AUTH_HEADER_TYPES": ("Bearer",),
+}

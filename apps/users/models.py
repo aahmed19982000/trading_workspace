@@ -46,6 +46,7 @@ class CustomUser(AbstractUser):
         max_length=20, choices=TRADER_LEVELS, default="beginner"
     )
     timezone = models.CharField("المنطقة الزمنية", max_length=64, default="UTC")
+    is_email_verified = models.BooleanField("تم تأكيد البريد الإلكتروني", default=False)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
