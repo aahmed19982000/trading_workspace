@@ -30,3 +30,15 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
     permission_classes = [permissions.AllowAny]
     throttle_classes = [AnonRateThrottle]
+
+
+class RegisterPageView(TemplateView):
+    template_name = "auth/register.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        lang = request.GET.get("lang")
+        supported_languages = {code for code, _name in settings.LANGUAGES}
+        if lang and lang in supported_languages:
+            translation.activate(lang)
+            request.session[settings.LANGUAGE_COOKIE_NAME] = lang
+        return super().dispatch(request, *args, **kwargs)
