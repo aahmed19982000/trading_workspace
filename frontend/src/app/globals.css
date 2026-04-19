@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+
+:root {
+  --background: #f7f0e4;
+  --foreground: #1f2937;
+  --surface: #fffaf0;
+  --surface-strong: #f1e4c8;
+  --border: #dfcfaa;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-border: var(--border);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #10211d;
+    --foreground: #f7f3ea;
+    --surface: #16302b;
+    --surface-strong: #1c3e37;
+    --border: #2d5b52;
+  }
+}
+
+html {
+  direction: rtl;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+* {
+  border-color: var(--border);
+}
+
+input,
+select,
+textarea {
+  text-align: right;
+}
+
+input::placeholder,
+textarea::placeholder {
+  text-align: right;
+}

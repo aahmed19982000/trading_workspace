@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% trans "Sovereign Ledger" %} | {% trans "Create Account" %}</title>
+    <title>{% trans "SeoTools AI Platform" %} | {% trans "Create Account" %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,25 +15,34 @@
   </head>
   <body class="{% if LANGUAGE_BIDI %}is-rtl{% else %}is-ltr{% endif %}">
     <main class="login-shell">
+      <section class="hero-panel hero-panel--seo">
+        <div class="hero-orb hero-orb--one"></div>
+        <div class="hero-orb hero-orb--two"></div>
 
-      <section class="hero-panel">
-        <div class="hero-overlay"></div>
-        <div class="market-card">
+        <div class="market-card market-card--seo">
           <div class="market-header">
-            <span>{% trans "Market Status" %}</span>
-            <span class="live-pill">{% trans "Live" %}</span>
+            <span>{% trans "Current Scope" %}</span>
+            <span class="live-pill">{% trans "Phase 1" %}</span>
           </div>
-          <p>{% trans "Global Liquidity Index" %}</p>
-          <strong>482.91M</strong>
+          <p>{% trans "Initial onboarding" %}</p>
+          <strong>{% trans "Create account via API" %}</strong>
           <div class="market-bar"></div>
         </div>
+
         <div class="hero-copy">
-          <h3>{% trans "Institutional Grade Trading Architecture." %}</h3>
-          <p>{% trans "Access high-frequency execution tools and deep-liquidity analysis designed for professional quant workflows." %}</p>
+          <h3>{% trans "Start with a lightweight account layer." %}</h3>
+          <p>
+            {% blocktrans %}
+            We are keeping the current backend as-is for now and exposing a branded registration
+            page that talks directly to the API.
+            {% endblocktrans %}
+          </p>
         </div>
+
         <div class="hero-meta">
-          <span>{% trans "AES-256 Encrypted" %}</span>
-          <span>{% trans "Low-Latency Mesh" %}</span>
+          <span>{% trans "Email Auth" %}</span>
+          <span>{% trans "JWT Ready" %}</span>
+          <span>{% trans "Future Workspace Flow" %}</span>
         </div>
       </section>
 
@@ -45,143 +54,96 @@
         </div>
 
         <div class="brand-block">
-          <h1>{% trans "Sovereign Ledger" %}</h1>
-          <p>{% trans "Institutional Grade Trading Workspace" %}</p>
+          <span class="brand-kicker">{% trans "SEO SaaS" %}</span>
+          <h1>{% trans "SeoTools AI Platform" %}</h1>
+          <p>{% trans "Create the first account for your current workspace flow." %}</p>
         </div>
 
         <div class="form-copy">
-          <h2>{% trans "Create Master Account" %}</h2>
-          <p>{% trans "Configure your institutional identity to begin." %}</p>
+          <h2>{% trans "Create Account" %}</h2>
+          <p>{% trans "This step creates the user and prepares API login only." %}</p>
         </div>
 
-        <div class="alert-box" id="alert-error" role="alert" style="display:none;">
+        <div class="alert-box" id="alert-error" role="alert" hidden>
           <span class="alert-icon">!</span>
           <span id="alert-error-msg"></span>
         </div>
 
-        <div class="alert-box alert-box--success" id="alert-success" role="alert" style="display:none;">
+        <div class="alert-box alert-box--success" id="alert-success" role="alert" hidden>
           <span class="alert-icon">✓</span>
-          <span>{% trans "Account created successfully! Redirecting..." %}</span>
+          <span>{% trans "Account created successfully. Redirecting to sign in..." %}</span>
         </div>
 
         <form class="login-form" id="register-form" novalidate>
           {% csrf_token %}
 
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; direction:ltr;">
-            <div>
-              <label for="full_name">{% trans "Full Name" %}</label>
-              <input id="full_name" name="full_name" type="text" placeholder="John Doe" />
-            </div>
-            <div>
-              <label for="email">{% trans "Email Address" %}</label>
-              <input id="email" name="email" type="email" placeholder="j.doe@firm.com" />
-            </div>
+          <label for="full_name">{% trans "Full Name" %}</label>
+          <input
+            id="full_name"
+            name="full_name"
+            type="text"
+            placeholder="{% trans 'Jane Smith' %}"
+          />
+
+          <label for="email" class="field-spacing">{% trans "Email Address" %}</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="{% trans 'team@company.com' %}"
+            required
+          />
+
+          <label for="password" class="field-spacing">{% trans "Password" %}</label>
+          <div class="password-field">
+            <input id="password" name="password" type="password" required />
+            <button type="button" id="toggle-password" aria-label="{% trans 'Toggle password visibility' %}">
+              <span class="eye"></span>
+            </button>
           </div>
 
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px; direction:ltr;">
-            <div>
-              <label for="password">{% trans "Password" %}</label>
-              <div class="password-field">
-                <input id="password" name="password" type="password" />
-                <button type="button" id="toggle-password" aria-label="{% trans 'Toggle password visibility' %}">
-                  <span class="eye"></span>
-                </button>
-              </div>
-            </div>
-            <div>
-              <label for="password_confirm">{% trans "Confirm Password" %}</label>
-              <div class="password-field">
-                <input id="password_confirm" name="password_confirm" type="password" />
-                <button type="button" id="toggle-password-confirm" aria-label="{% trans 'Toggle password visibility' %}">
-                  <span class="eye"></span>
-                </button>
-              </div>
-            </div>
+          <label for="password_confirm" class="field-spacing">{% trans "Confirm Password" %}</label>
+          <div class="password-field">
+            <input id="password_confirm" name="password_confirm" type="password" required />
+            <button type="button" id="toggle-password-confirm" aria-label="{% trans 'Toggle password visibility' %}">
+              <span class="eye"></span>
+            </button>
           </div>
 
-          <div style="margin-top:16px;">
-            <label>{% trans "Trader Archetype" %}</label>
-            <div class="archetype-grid" id="archetype-grid">
-              <button type="button" class="archetype-btn active" data-value="beginner">
-                <span class="archetype-icon">&#9685;</span>
-                {% trans "Beginner" %}
-              </button>
-              <button type="button" class="archetype-btn" data-value="intermediate">
-                <span class="archetype-icon">&#126;</span>
-                {% trans "Pro" %}
-              </button>
-              <button type="button" class="archetype-btn" data-value="advanced">
-                <span class="archetype-icon">&#62;</span>
-                {% trans "Algo" %}
-              </button>
-            </div>
-            <input type="hidden" id="experience_level" name="experience_level" value="beginner" />
-          </div>
-
-          <div style="margin-top:16px; display:flex; align-items:flex-start; gap:10px;">
-            <input type="checkbox" id="terms" name="terms" style="margin-top:3px; width:16px; height:16px; flex-shrink:0;" />
-            <label for="terms" style="font-size:13px; cursor:pointer;">
-              {% blocktrans trimmed %}
-                I acknowledge the Sovereign Ledger
-                <a href="#">Risk Disclosure</a>
-                and agree to the
-                <a href="#">Terms of Execution</a>
-                for multi-asset trading.
-              {% endblocktrans %}
-            </label>
-          </div>
-
-          <button type="submit" class="primary-btn" id="submit-btn" style="margin-top:20px;">
-            {% trans "Initialize Workspace" %} &#8594;
+          <button type="submit" class="primary-btn" id="submit-btn">
+            {% trans "Create Account" %}
           </button>
-          <button type="button" class="secondary-btn" id="loading-btn" style="display:none; margin-top:20px;">
+          <button type="button" class="secondary-btn" id="loading-btn" hidden>
             <span class="spinner"></span>
-            {% trans "Initializing..." %}
+            {% trans "Creating account..." %}
           </button>
         </form>
 
         <p class="create-account">
-          {% trans "Already authorized?" %}
+          {% trans "Already have access?" %}
           <a href="{% url 'login_page' %}">{% trans "Sign In" %}</a>
         </p>
 
         <footer class="panel-footer">
-          <span>&copy; 2024 {% trans "Sovereign Ledger" %}</span>
+          <span>&copy; 2026 {% trans "SeoTools AI Platform" %}</span>
           <nav>
-            <a href="#">{% trans "Security" %}</a>
             <a href="#">{% trans "Privacy" %}</a>
+            <a href="#">{% trans "Auth Flow" %}</a>
           </nav>
         </footer>
       </section>
-
     </main>
 
-    <style>
-      .archetype-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 8px; }
-      .archetype-btn { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 14px 8px; border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); background: var(--color-background-secondary); color: var(--color-text-primary); font-size: 13px; font-weight: 500; cursor: pointer; transition: border-color .15s, background .15s; }
-      .archetype-btn:hover { border-color: var(--color-border-primary); background: var(--color-background-primary); }
-      .archetype-btn.active { border-color: #111; background: var(--color-background-primary); }
-      .archetype-icon { font-size: 18px; }
-      .alert-box--success { background: var(--color-background-success); border-color: var(--color-border-success); color: var(--color-text-success); }
-    </style>
-
     <script>
-      const togglePassword = (btnId, inputId) => {
-        document.getElementById(btnId).addEventListener('click', () => {
+      const togglePassword = (buttonId, inputId) => {
+        document.getElementById(buttonId).addEventListener('click', () => {
           const input = document.getElementById(inputId);
           input.type = input.type === 'password' ? 'text' : 'password';
         });
       };
+
       togglePassword('toggle-password', 'password');
       togglePassword('toggle-password-confirm', 'password_confirm');
-
-      document.querySelectorAll('.archetype-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.archetype-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          document.getElementById('experience_level').value = btn.dataset.value;
-        });
-      });
 
       const form = document.getElementById('register-form');
       const submitBtn = document.getElementById('submit-btn');
@@ -191,63 +153,73 @@
       const alertSuccess = document.getElementById('alert-success');
 
       const showError = (msg) => {
-        alertError.style.display = '';
+        alertError.hidden = false;
         alertErrorMsg.textContent = msg;
-        alertSuccess.style.display = 'none';
+        alertSuccess.hidden = true;
       };
 
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        alertError.style.display = 'none';
-        alertSuccess.style.display = 'none';
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        alertError.hidden = true;
+        alertSuccess.hidden = true;
 
         const password = document.getElementById('password').value;
         const passwordConfirm = document.getElementById('password_confirm').value;
-        const terms = document.getElementById('terms').checked;
-
         if (password !== passwordConfirm) {
-          showError('{% trans "Passwords do not match. Please verify your security keys." %}');
-          return;
-        }
-        if (!terms) {
-          showError('{% trans "You must accept the Terms of Execution to continue." %}');
+          showError('{% trans "Passwords do not match." %}');
           return;
         }
 
-        submitBtn.style.display = 'none';
-        loadingBtn.style.display = '';
+        submitBtn.hidden = true;
+        loadingBtn.hidden = false;
 
         const csrfToken = form.querySelector('[name=csrfmiddlewaretoken]').value;
 
         try {
-          const response = await fetch('/api/register/', {
+          const response = await fetch('{% url "register" %}', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
               'X-CSRFToken': csrfToken,
             },
             body: JSON.stringify({
+              full_name: document.getElementById('full_name').value,
               email: document.getElementById('email').value,
               password: password,
               password_confirm: passwordConfirm,
-              experience_level: document.getElementById('experience_level').value,
             }),
           });
 
-          const data = await response.json();
+          const data = await response.json().catch(() => ({}));
 
-          if (response.ok) {
-            alertSuccess.style.display = '';
-            setTimeout(() => { window.location.href = '/login/'; }, 1500);
-          } else {
-            const firstError = Object.values(data)[0];
-            showError(Array.isArray(firstError) ? firstError[0] : firstError);
+          if (!response.ok) {
+            if (data.message) {
+              showError(data.message);
+              return;
+            }
+
+            const firstError = data.errors ? Object.values(data.errors)[0] : Object.values(data)[0];
+            if (Array.isArray(firstError) && firstError[0]?.message) {
+              showError(firstError[0].message);
+              return;
+            }
+            if (firstError?.message) {
+              showError(firstError.message);
+              return;
+            }
+            showError('{% trans "Unable to create account." %}');
+            return;
           }
-        } catch (err) {
+
+          alertSuccess.hidden = false;
+          setTimeout(() => {
+            window.location.href = '{% url "login_page" %}';
+          }, 1400);
+        } catch (error) {
           showError('{% trans "Network error. Please try again." %}');
         } finally {
-          submitBtn.style.display = '';
-          loadingBtn.style.display = 'none';
+          submitBtn.hidden = false;
+          loadingBtn.hidden = true;
         }
       });
     </script>

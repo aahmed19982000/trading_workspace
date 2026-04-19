@@ -31,6 +31,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
+    "rest_framework_simplejwt.token_blacklist",
     "corsheaders",
     "django_filters",
 ]
@@ -134,11 +135,17 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated",
     ],
     "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
+    "EXCEPTION_HANDLER": "core.exceptions.custom_exception_handler",
 }
 
 # 13. CORS
+DEFAULT_CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
 CORS_ALLOWED_ORIGINS = env.list(
-    "CORS_ALLOWED_ORIGINS", default=["http://localhost:3000"]
+    "CORS_ALLOWED_ORIGINS",
+    default=DEFAULT_CORS_ALLOWED_ORIGINS,
 )
 CORS_ALLOW_CREDENTIALS = True
 

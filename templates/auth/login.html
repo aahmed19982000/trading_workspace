@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% trans "Sovereign Ledger" %} | {% trans "Sign In" %}</title>
+    <title>{% trans "SeoTools AI Platform" %} | {% trans "Sign In" %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,19 +23,19 @@
         </div>
 
         <div class="brand-block">
-          <h1>{% trans "Sovereign Ledger" %}</h1>
-          <p>{% trans "Institutional Grade Trading Workspace" %}</p>
+          <span class="brand-kicker">{% trans "SEO SaaS" %}</span>
+          <h1>{% trans "SeoTools AI Platform" %}</h1>
+          <p>{% trans "SEO workflows and AI content checks from one workspace." %}</p>
         </div>
 
         <div class="form-copy">
           <h2>{% trans "Sign In" %}</h2>
-          <p>{% trans "Access your terminal and market analysis." %}</p>
+          <p>{% trans "Use your account to access the current API-connected workspace." %}</p>
         </div>
 
-        <!-- ✅ مخفي افتراضياً -->
-        <div class="alert-box" id="alert-box" role="alert" style="display: none;">
+        <div class="alert-box" id="alert-box" role="alert" hidden>
           <span class="alert-icon">!</span>
-          <span>
+          <span id="alert-text">
             {% trans "Invalid credentials. Please verify your email and password." %}
           </span>
         </div>
@@ -47,101 +47,108 @@
             id="email"
             name="email"
             type="email"
-            placeholder="{% trans 'name@firm.com' %}"
+            autocomplete="email"
+            placeholder="{% trans 'name@company.com' %}"
+            required
           />
 
           <div class="password-heading">
             <label for="password">{% trans "Password" %}</label>
-            <a href="#">{% trans "Forgot Password?" %}</a>
+            <a href="{% url 'register_page' %}">{% trans "Create Account" %}</a>
           </div>
           <div class="password-field">
             <input
               id="password"
               name="password"
               type="password"
+              autocomplete="current-password"
+              required
             />
-            <!-- ✅ toggle كلمة المرور -->
             <button
               type="button"
               id="toggle-password"
               aria-label="{% trans 'Toggle password visibility' %}"
             >
-              <span class="eye" id="eye-icon"></span>
+              <span class="eye"></span>
             </button>
           </div>
 
-          <button type="submit" class="primary-btn">{% trans "Sign In" %}</button>
-          <button type="button" class="secondary-btn" id="loading-btn" style="display: none;">
+          <button type="submit" class="primary-btn" id="submit-btn">{% trans "Sign In" %}</button>
+          <button type="button" class="secondary-btn" id="loading-btn" hidden>
             <span class="spinner"></span>
             {% trans "Authenticating..." %}
           </button>
         </form>
 
         <p class="create-account">
-          {% trans "New to the platform?" %}
-          <a href="{% url 'register_page' %}">{% trans "Create Account" %}</a>
+          {% trans "Need a new workspace account?" %}
+          <a href="{% url 'register_page' %}">{% trans "Create one here" %}</a>
         </p>
 
         <footer class="panel-footer">
-          <span>&copy; 2024 {% trans "Sovereign Ledger" %}</span>
+          <span>&copy; 2026 {% trans "SeoTools AI Platform" %}</span>
           <nav>
-            <a href="#">{% trans "Security" %}</a>
             <a href="#">{% trans "Privacy" %}</a>
+            <a href="#">{% trans "API Ready" %}</a>
           </nav>
         </footer>
       </section>
 
-      <section class="hero-panel">
-        <div class="hero-overlay"></div>
-        <div class="market-card">
+      <section class="hero-panel hero-panel--seo">
+        <div class="hero-orb hero-orb--one"></div>
+        <div class="hero-orb hero-orb--two"></div>
+
+        <div class="market-card market-card--seo">
           <div class="market-header">
-            <span>{% trans "Market Status" %}</span>
-            <span class="live-pill">{% trans "Live" %}</span>
+            <span>{% trans "Current Scope" %}</span>
+            <span class="live-pill">{% trans "Auth + API" %}</span>
           </div>
-          <p>{% trans "Global Liquidity Index" %}</p>
-          <strong>482.91M</strong>
+          <p>{% trans "Phase 1 delivery" %}</p>
+          <strong>{% trans "Login and registration live" %}</strong>
           <div class="market-bar"></div>
         </div>
 
         <div class="hero-copy">
-          <h3>{% trans "Precision-engineered for the modern quant." %}</h3>
+          <h3>{% trans "One clean entry point for the SeoTools platform." %}</h3>
           <p>
             {% blocktrans %}
-            Experience a trading environment where data clarity meets
-            architectural elegance. Execute trades with absolute certainty in a
-            workspace built for institutional performance.
+            This first milestone keeps the current backend structure while exposing a branded
+            sign-in and account creation flow connected directly to the API.
             {% endblocktrans %}
           </p>
         </div>
 
         <div class="hero-meta">
-          <span>{% trans "AES-256 Encrypted" %}</span>
-          <span>{% trans "Low-Latency Mesh" %}</span>
+          <span>{% trans "JWT Tokens" %}</span>
+          <span>{% trans "AR + EN" %}</span>
+          <span>{% trans "Django API" %}</span>
         </div>
       </section>
     </main>
 
     <script>
-      // toggle كلمة المرور
       const toggleBtn = document.getElementById('toggle-password');
       const passwordInput = document.getElementById('password');
-
-      toggleBtn.addEventListener('click', function () {
-        const isPassword = passwordInput.type === 'password';
-        passwordInput.type = isPassword ? 'text' : 'password';
-      });
-
-      // إرسال الفورم عبر fetch وإظهار الخطأ عند الفشل
       const form = document.getElementById('login-form');
       const alertBox = document.getElementById('alert-box');
-      const submitBtn = form.querySelector('.primary-btn');
+      const alertText = document.getElementById('alert-text');
+      const submitBtn = document.getElementById('submit-btn');
       const loadingBtn = document.getElementById('loading-btn');
 
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        alertBox.style.display = 'none';
-        submitBtn.style.display = 'none';
-        loadingBtn.style.display = '';
+      toggleBtn.addEventListener('click', () => {
+        passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+      });
+
+      const showError = (message) => {
+        alertText.textContent = message;
+        alertBox.hidden = false;
+      };
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        alertBox.hidden = true;
+        submitBtn.hidden = true;
+        loadingBtn.hidden = false;
 
         const formData = new FormData(form);
         const data = {
@@ -159,21 +166,22 @@
             body: JSON.stringify(data),
           });
 
-          if (response.ok) {
-            const result = await response.json();
-            // احفظ الـ tokens
-            localStorage.setItem('access', result.access);
-            localStorage.setItem('refresh', result.refresh);
-            // انتقل للصفحة الرئيسية
-            window.location.href = '/dashboard/';
-          } else {
-            alertBox.style.display = '';
+          const result = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            const message = result.message || result.detail || '{% trans "Sign in failed. Please try again." %}';
+            showError(message);
+            return;
           }
-        } catch (err) {
-          alertBox.style.display = '';
+
+          localStorage.setItem('access', result.access);
+          localStorage.setItem('refresh', result.refresh);
+          window.location.href = '{% url "workspace_home" %}';
+        } catch (error) {
+          showError('{% trans "Network error. Please try again." %}');
         } finally {
-          submitBtn.style.display = '';
-          loadingBtn.style.display = 'none';
+          submitBtn.hidden = false;
+          loadingBtn.hidden = true;
         }
       });
     </script>

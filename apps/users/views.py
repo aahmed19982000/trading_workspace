@@ -2,10 +2,18 @@ from django.conf import settings
 from django.utils import translation
 from django.views.generic import TemplateView
 from rest_framework import generics, permissions
+from rest_framework.exceptions import ValidationError
+from rest_framework.response import Response
 from rest_framework.throttling import AnonRateThrottle
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from .serializers import EmailTokenObtainPairSerializer, RegisterSerializer
+from .serializers import (
+    CurrentUserSerializer,
+    EmailTokenObtainPairSerializer,
+    RegisterSerializer,
+    UserProfileSerializer,
+    WorkspaceSerializer,
+)
 
 
 class LoginPageView(TemplateView):
@@ -32,6 +40,49 @@ class RegisterView(generics.CreateAPIView):
     throttle_classes = [AnonRateThrottle]
 
 
+class CurrentUserView(generics.RetrieveAPIView):
+    serializer_class = CurrentUserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user
+
+
+class UserProfileView(generics.RetrieveUpdateAPIView):
+    serializer_class = UserProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user
+
+
+class WorkspaceListCreateView(generics.ListCreateAPIView):
+    serializer_class = WorkspaceSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return self.request.user.workspaces.all()
+
+    def put(self, request, *args, **kwargs):
+        workspace_id = request.data.get("id")
+        if not workspace_id:
+            raise ValidationError({"id": "Workspace id is required."})
+
+        instance = generics.get_object_or_404(self.get_queryset(), pk=workspace_id)
+        serializer = self.get_serializer(instance, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data)
+
+
+class WorkspaceDetailView(generics.RetrieveUpdateAPIView):
+    serializer_class = WorkspaceSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return self.request.user.workspaces.all()
+
+
 class RegisterPageView(TemplateView):
     template_name = "auth/register.html"
 
@@ -42,3 +93,7 @@ class RegisterPageView(TemplateView):
             translation.activate(lang)
             request.session[settings.LANGUAGE_COOKIE_NAME] = lang
         return super().dispatch(request, *args, **kwargs)
+
+
+class WorkspaceHomeView(TemplateView):
+    template_name = "workspace/home.html"

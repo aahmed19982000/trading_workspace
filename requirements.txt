@@ -1,12 +1,41 @@
-django
+# --- النواة وقاعدة البيانات (Core & DB) ---
+django>=5.1
 django-environ
 psycopg2-binary
-django-redis
+whitenoise
+python-dotenv
+
+# --- المصادقة وإدارة مساحات العمل (Auth & Workspaces) ---
+django-allauth
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+
+# --- الواجهة الأمامية والتفاعل (Frontend & HTMX) ---
+django-htmx
+django-tailwind
+django-rosetta
+django-crispy-forms
+crispy-tailwind
+
+# --- المهام الخلفية والتحليل (Async & SEO Tools) ---
 celery
 redis
-djangorestframework
-django-cors-headers
-cryptography
-django-filter
-djangorestframework-simplejwt
+django-redis
+httpx
+beautifulsoup4
+lxml
+
+# --- الذكاء الاصطناعي (AI - Gemini Integration) ---
+google-generativeai
+openai
+
+# --- المدفوعات والاشتراكات (Payments & Billing) ---
+stripe
+dj-stripe
+
+# --- أدوات إضافية (Utilities) ---
 Pillow
+django-filter
+cryptography
+django-axes

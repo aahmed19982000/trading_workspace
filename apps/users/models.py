@@ -109,3 +109,31 @@ class UserProfile(models.Model):
     class Meta:
         verbose_name = "ملف المستخدم"
         verbose_name_plural = "ملفات المستخدمين"
+
+
+class Workspace(models.Model):
+    user = models.ForeignKey(
+        "users.CustomUser",
+        on_delete=models.CASCADE,
+        related_name="workspaces",
+        verbose_name="المستخدم",
+    )
+    name = models.CharField("اسم مساحة العمل", max_length=150)
+    description = models.TextField("الوصف", blank=True)
+    is_active = models.BooleanField("نشطة", default=True)
+    created_at = models.DateTimeField("تاريخ الإنشاء", auto_now_add=True)
+    updated_at = models.DateTimeField("تاريخ التحديث", auto_now=True)
+
+    def __str__(self):
+        return f"{self.user.email} - {self.name}"
+
+    class Meta:
+        verbose_name = "مساحة عمل"
+        verbose_name_plural = "مساحات العمل"
+        ordering = ["-created_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "name"],
+                name="unique_workspace_name_per_user",
+            )
+        ]

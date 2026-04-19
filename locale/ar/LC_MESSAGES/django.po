@@ -1,8 +1,8 @@
-# Arabic translations for Sovereign Ledger.
+# Arabic translations for SeoTools AI Platform.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-13 14:08+0000\n"
+"POT-Creation-Date: 2026-04-19 19:30+0000\n"
 "Language: ar\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,206 +11,314 @@ msgstr ""
 
 #: core/settings/base.py:148
 msgid "English"
-msgstr ""
+msgstr "الإنجليزية"
 
 #: core/settings/base.py:149
 msgid "Arabic"
-msgstr ""
+msgstr "العربية"
 
-#: templates/auth/login.html:7 templates/auth/login.html:26
-#: templates/auth/login.html:86 templates/auth/register.html:7
-#: templates/auth/register.html:48 templates/auth/register.html:149
-msgid "Sovereign Ledger"
-msgstr ""
+#: templates/auth/login.html:7 templates/auth/login.html:27
+#: templates/auth/login.html:89 templates/auth/register.html:7
+#: templates/auth/register.html:58 templates/auth/register.html:128
+#: templates/workspace/home.html:7
+msgid "SeoTools AI Platform"
+msgstr "منصة أدوات السيو والذكاء الاصطناعي"
 
-#: templates/auth/login.html:7 templates/auth/login.html:31
-#: templates/auth/login.html:73 templates/auth/register.html:145
+#: templates/auth/login.html:26 templates/auth/register.html:57
+msgid "SEO SaaS"
+msgstr "منصة سيو سحابية"
+
+#: templates/auth/login.html:28
+msgid "SEO workflows and AI content checks from one workspace."
+msgstr "إدارة مهام السيو وفحص محتوى الذكاء الاصطناعي من مساحة عمل واحدة."
+
+#: templates/auth/login.html:7 templates/auth/login.html:32
+#: templates/auth/login.html:76 templates/auth/register.html:124
 msgid "Sign In"
 msgstr "تسجيل الدخول"
 
-#: templates/auth/login.html:27 templates/auth/register.html:49
-msgid "Institutional Grade Trading Workspace"
-msgstr "بيئة تداول مؤسسية متكاملة"
-
-#: templates/auth/login.html:32
-msgid "Access your terminal and market analysis."
-msgstr "ادخل إلى منصتك وتحليلات السوق."
+#: templates/auth/login.html:33
+msgid "Use your account to access the current API-connected workspace."
+msgstr "استخدم حسابك للوصول إلى مساحة العمل المرتبطة بالواجهة البرمجية الحالية."
 
 #: templates/auth/login.html:39
 msgid "Invalid credentials. Please verify your email and password."
-msgstr "بيانات غير صحيحة. يرجى التحقق من البريد الإلكتروني وكلمة المرور."
+msgstr "بيانات الدخول غير صحيحة. يرجى التحقق من البريد الإلكتروني وكلمة المرور."
 
-#: templates/auth/login.html:45 templates/auth/register.html:76
+#: templates/auth/login.html:45 templates/auth/register.html:88
 msgid "Email Address"
 msgstr "البريد الإلكتروني"
 
-#: templates/auth/login.html:50
-msgid "name@firm.com"
-msgstr ""
-
-#: templates/auth/login.html:54 templates/auth/register.html:83
+#: templates/auth/login.html:56 templates/auth/register.html:97
 msgid "Password"
 msgstr "كلمة المرور"
 
-#: templates/auth/login.html:55
-msgid "Forgot Password?"
-msgstr "نسيت كلمة المرور؟"
-
-#: templates/auth/login.html:67 templates/auth/register.html:86
-#: templates/auth/register.html:95
-msgid "Toggle password visibility"
-msgstr ""
-
-#: templates/auth/login.html:76
-msgid "Authenticating..."
-msgstr "جارٍ التحقق..."
-
-#: templates/auth/login.html:81
-msgid "New to the platform?"
-msgstr "مستخدم جديد؟"
-
-#: templates/auth/login.html:82 templates/auth/register.html:7
+#: templates/auth/login.html:57 templates/auth/register.html:63
+#: templates/auth/register.html:114
 msgid "Create Account"
 msgstr "إنشاء حساب"
 
-#: templates/auth/login.html:88 templates/auth/register.html:151
-msgid "Security"
-msgstr "الأمان"
+#: templates/auth/login.html:70 templates/auth/register.html:100
+#: templates/auth/register.html:108
+msgid "Toggle password visibility"
+msgstr "إظهار أو إخفاء كلمة المرور"
 
-#: templates/auth/login.html:89 templates/auth/register.html:152
+#: templates/auth/login.html:79
+msgid "Authenticating..."
+msgstr "جارٍ التحقق..."
+
+#: templates/auth/login.html:84
+msgid "Need a new workspace account?"
+msgstr "هل تحتاج إلى حساب جديد لمساحة العمل؟"
+
+#: templates/auth/login.html:85
+msgid "Create one here"
+msgstr "أنشئه من هنا"
+
+#: templates/auth/login.html:91 templates/auth/register.html:130
 msgid "Privacy"
 msgstr "الخصوصية"
 
-#: templates/auth/login.html:98 templates/auth/register.html:23
-msgid "Market Status"
-msgstr "حالة السوق"
+#: templates/auth/login.html:92
+msgid "API Ready"
+msgstr "جاهز للربط البرمجي"
 
-#: templates/auth/login.html:99 templates/auth/register.html:24
-msgid "Live"
-msgstr "مباشر"
+#: templates/auth/login.html:103 templates/auth/register.html:24
+msgid "Current Scope"
+msgstr "النطاق الحالي"
 
-#: templates/auth/login.html:101 templates/auth/register.html:26
-msgid "Global Liquidity Index"
-msgstr "مؤشر السيولة العالمية"
+#: templates/auth/login.html:104
+msgid "Auth + API"
+msgstr "المصادقة + الواجهة البرمجية"
+
+#: templates/auth/login.html:106
+msgid "Phase 1 delivery"
+msgstr "تسليم المرحلة الأولى"
 
 #: templates/auth/login.html:107
-msgid "Precision-engineered for the modern quant."
-msgstr "مصمم بدقة للمتداول المؤسسي الحديث."
+msgid "Login and registration live"
+msgstr "تسجيل الدخول وإنشاء الحساب جاهزان"
 
-#: templates/auth/login.html:109
+#: templates/auth/login.html:112
+msgid "One clean entry point for the SeoTools platform."
+msgstr "نقطة دخول واضحة وموحدة لمنصة أدوات السيو."
+
+#: templates/auth/login.html:114
 msgid ""
 "\n"
-"            Experience a trading environment where data clarity meets\n"
-"            architectural elegance. Execute trades with absolute certainty "
-"in a\n"
-"            workspace built for institutional performance.\n"
+"            This first milestone keeps the current backend structure while exposing a branded\n"
+"            sign-in and account creation flow connected directly to the API.\n"
 "            "
 msgstr ""
 "\n"
-"            اختبر بيئة تداول تجمع بين وضوح البيانات والأناقة المعمارية.\n"
-"            نفّذ صفقاتك بثقة تامة في منصة مبنية للأداء المؤسسي.\n"
+"            تحافظ هذه المرحلة الأولى على هيكل الخلفية الحالي مع توفير\n"
+"            تجربة تسجيل دخول وإنشاء حساب بهوية المنصة ومرتبطة مباشرة بالواجهة البرمجية.\n"
 "            "
 
-#: templates/auth/login.html:118 templates/auth/register.html:35
-msgid "AES-256 Encrypted"
-msgstr "مشفّر بـ AES-256"
+#: templates/auth/login.html:122
+msgid "JWT Tokens"
+msgstr "رموز JWT"
 
-#: templates/auth/login.html:119 templates/auth/register.html:36
-msgid "Low-Latency Mesh"
-msgstr "شبكة منخفضة الكمون"
+#: templates/auth/login.html:123
+msgid "AR + EN"
+msgstr "العربية + الإنجليزية"
 
-#: templates/auth/register.html:31
-msgid "Institutional Grade Trading Architecture."
-msgstr "بنية تداول مؤسسية متكاملة."
+#: templates/auth/login.html:124
+msgid "Django API"
+msgstr "واجهة Django البرمجية"
 
-#: templates/auth/register.html:32
+#: templates/auth/login.html:172
+msgid "Sign in failed. Please try again."
+msgstr "فشل تسجيل الدخول. يرجى المحاولة مرة أخرى."
+
+#: templates/auth/login.html:181 templates/auth/register.html:206
+msgid "Network error. Please try again."
+msgstr "حدث خطأ في الشبكة. يرجى المحاولة مرة أخرى."
+
+msgid "Please review the submitted data."
+msgstr "يرجى مراجعة البيانات المرسلة."
+
+msgid "Authentication credentials were not provided."
+msgstr "لم يتم إرسال بيانات المصادقة."
+
+msgid "You do not have permission to perform this action."
+msgstr "ليست لديك صلاحية لتنفيذ هذا الإجراء."
+
+msgid "The requested resource was not found."
+msgstr "المورد المطلوب غير موجود."
+
+msgid "This HTTP method is not allowed for this endpoint."
+msgstr "طريقة الطلب هذه غير مسموح بها لهذا المسار."
+
+msgid "Too many requests. Please try again in a moment."
+msgstr "عدد الطلبات كبير جدًا. يرجى المحاولة بعد قليل."
+
+msgid "The request payload could not be processed."
+msgstr "تعذر معالجة بيانات الطلب."
+
+msgid "An unexpected server error occurred."
+msgstr "حدث خطأ داخلي غير متوقع في الخادم."
+
+msgid "Please enter your email and password."
+msgstr "يرجى إدخال البريد الإلكتروني وكلمة المرور."
+
+msgid "This account is inactive."
+msgstr "هذا الحساب غير مفعل."
+
+msgid "Workspace name is required."
+msgstr "اسم مساحة العمل مطلوب."
+
+msgid "Workspace id is required."
+msgstr "معرف مساحة العمل مطلوب."
+
+#: templates/auth/register.html:24 templates/workspace/home.html:19
+msgid "Phase 1"
+msgstr "المرحلة الأولى"
+
+#: templates/auth/register.html:27
+msgid "Initial onboarding"
+msgstr "الإعداد الأولي"
+
+#: templates/auth/register.html:28
+msgid "Create account via API"
+msgstr "إنشاء حساب عبر الواجهة البرمجية"
+
+#: templates/auth/register.html:33
+msgid "Start with a lightweight account layer."
+msgstr "ابدأ بطبقة حسابات خفيفة."
+
+#: templates/auth/register.html:35
 msgid ""
-"Access high-frequency execution tools and deep-liquidity analysis designed "
-"for professional quant workflows."
+"\n"
+"            We are keeping the current backend as-is for now and exposing a branded registration\n"
+"            page that talks directly to the API.\n"
+"            "
 msgstr ""
-"احصل على أدوات تنفيذ عالية التردد وتحليل السيولة العميقة المصممة لسير عمل "
-"الكميات المهنية."
+"\n"
+"            نُبقي حاليًا على الخلفية كما هي، مع توفير صفحة تسجيل بهوية المنصة\n"
+"            تتواصل مباشرة مع الواجهة البرمجية.\n"
+"            "
 
-#: templates/auth/register.html:53
-msgid "Create Master Account"
-msgstr "إنشاء حساب رئيسي"
+#: templates/auth/register.html:43
+msgid "Email Auth"
+msgstr "المصادقة بالبريد الإلكتروني"
 
-#: templates/auth/register.html:54
-msgid "Configure your institutional identity to begin."
-msgstr "أعدّ هويتك المؤسسية للبدء."
+#: templates/auth/register.html:44
+msgid "JWT Ready"
+msgstr "جاهز لـ JWT"
+
+#: templates/auth/register.html:45
+msgid "Future Workspace Flow"
+msgstr "مسار مساحة العمل لاحقًا"
+
+#: templates/auth/register.html:59
+msgid "Create the first account for your current workspace flow."
+msgstr "أنشئ أول حساب ضمن مسار العمل الحالي."
 
 #: templates/auth/register.html:64
-msgid "Account created successfully! Redirecting..."
-msgstr "تم إنشاء الحساب بنجاح! جارٍ التحويل..."
+msgid "This step creates the user and prepares API login only."
+msgstr "تقوم هذه الخطوة بإنشاء المستخدم وتجهيز تسجيل الدخول عبر الواجهة البرمجية فقط."
 
-#: templates/auth/register.html:72
+#: templates/auth/register.html:74
+msgid "Account created successfully. Redirecting to sign in..."
+msgstr "تم إنشاء الحساب بنجاح. جارٍ التحويل إلى صفحة تسجيل الدخول..."
+
+#: templates/auth/register.html:80
 msgid "Full Name"
 msgstr "الاسم الكامل"
 
-#: templates/auth/register.html:92
+#: templates/auth/register.html:105
 msgid "Confirm Password"
 msgstr "تأكيد كلمة المرور"
 
-#: templates/auth/register.html:103
-msgid "Trader Archetype"
-msgstr "نوع المتداول"
+#: templates/auth/register.html:118
+msgid "Creating account..."
+msgstr "جارٍ إنشاء الحساب..."
 
-#: templates/auth/register.html:107
-msgid "Beginner"
-msgstr "مبتدئ"
+#: templates/auth/register.html:123
+msgid "Already have access?"
+msgstr "لديك وصول بالفعل؟"
 
-#: templates/auth/register.html:111
-msgid "Pro"
-msgstr "محترف"
+#: templates/auth/register.html:131
+msgid "Auth Flow"
+msgstr "مسار المصادقة"
 
-#: templates/auth/register.html:115
-msgid "Algo"
-msgstr "خوارزمي"
+#: templates/auth/register.html:169
+msgid "Passwords do not match."
+msgstr "كلمتا المرور غير متطابقتين."
 
-#: templates/auth/register.html:124
+#: templates/auth/register.html:197
+msgid "Unable to create account."
+msgstr "تعذر إنشاء الحساب."
+
+#: templates/workspace/home.html:7
+msgid "Workspace"
+msgstr "مساحة العمل"
+
+#: templates/workspace/home.html:20
+msgid "Workspace access is connected."
+msgstr "تم ربط الوصول إلى مساحة العمل."
+
+#: templates/workspace/home.html:22
 msgid ""
-"I acknowledge the Sovereign Ledger <a href=\"#\">Risk Disclosure</a> and "
-"agree to the <a href=\"#\">Terms of Execution</a> for multi-asset trading."
+"\n"
+"          You have reached the current handoff point: registration and login are connected to the API,\n"
+"          and the next modules can be added on top of this flow.\n"
+"          "
 msgstr ""
-"أقر بـ <a href=\"#\">إفصاح المخاطر</a> "
-"وأوافق على <a href=\"#\">شروط التنفيذ</a> للتداول متعدد الأصول."
+"\n"
+"          لقد وصلت إلى نقطة التسليم الحالية: تم ربط التسجيل وتسجيل الدخول بالواجهة البرمجية،\n"
+"          ويمكن إضافة الوحدات التالية فوق هذا المسار.\n"
+"          "
 
+#: templates/workspace/home.html:30
+msgid "Available now"
+msgstr "المتاح الآن"
 
-#: templates/auth/register.html:135
-msgid "Initialize Workspace"
-msgstr "تهيئة بيئة العمل"
+#: templates/workspace/home.html:32
+msgid "Create account through /api/register/"
+msgstr "إنشاء حساب عبر /api/register/"
 
-#: templates/auth/register.html:139
-msgid "Initializing..."
-msgstr "جارٍ التهيئة..."
+#: templates/workspace/home.html:33
+msgid "Sign in through /api/token/"
+msgstr "تسجيل الدخول عبر /api/token/"
 
-#: templates/auth/register.html:144
-msgid "Already authorized?"
-msgstr "لديك حساب بالفعل؟"
+#: templates/workspace/home.html:34
+msgid "Store access and refresh tokens in the browser"
+msgstr "حفظ رموز الوصول والتحديث في المتصفح"
 
-#: templates/auth/register.html:209
-msgid "Passwords do not match. Please verify your security keys."
-msgstr ""
+#: templates/workspace/home.html:39
+msgid "Next later"
+msgstr "لاحقًا"
 
-#: templates/auth/register.html:213
-msgid "You must accept the Terms of Execution to continue."
-msgstr ""
+#: templates/workspace/home.html:41
+msgid "Workspace model and multi-tenant roles"
+msgstr "نموذج مساحة العمل وصلاحيات تعدد المستأجرين"
 
-#: templates/auth/register.html:247
-msgid "Network error. Please try again."
-msgstr ""
+#: templates/workspace/home.html:42
+msgid "SEO tools modules and billing"
+msgstr "وحدات أدوات السيو والفوترة"
 
-#~ msgid "Risk Disclosure"
-#~ msgstr "إفصاح المخاطر"
+#: templates/workspace/home.html:43
+msgid "Dashboard metrics and AI checker flows"
+msgstr "مؤشرات لوحة التحكم ومسارات فحص الذكاء الاصطناعي"
 
-#~ msgid "and agree to the"
-#~ msgstr "وأوافق على"
+#: templates/workspace/home.html:49
+msgid "JWT access token"
+msgstr "رمز الوصول JWT"
 
-#~ msgid "Terms of Execution"
-#~ msgstr "شروط التنفيذ"
+#: templates/workspace/home.html:50
+msgid "Loading..."
+msgstr "جارٍ التحميل..."
 
-#~ msgid "for multi-asset trading."
-#~ msgstr "للتداول متعدد الأصول."
+#: templates/workspace/home.html:54
+msgid "Back to login"
+msgstr "العودة إلى تسجيل الدخول"
 
-#~ msgid "Already authorized? <a href=\"/login/\">Sign In</a>"
-#~ msgstr "لديك حساب؟ <a href=\"/login/\">تسجيل الدخول</a>"
+#: templates/workspace/home.html:55
+msgid "Clear local tokens"
+msgstr "حذف الرموز المحلية"
+
+#: templates/workspace/home.html:65 templates/workspace/home.html:70
+msgid "No token stored yet."
+msgstr "لا يوجد رمز محفوظ بعد."

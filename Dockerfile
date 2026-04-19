@@ -1,23 +1,26 @@
-# استخدام نسخة بايثون خفيفة ومتوافقة مع Apple Silicon
-FROM python:3.11-slim
+# استخدام إصدار Python مستقر وخفيف
+FROM python:3.12-slim
 
-# إعداد متغيرات البيئة لمنع بايثون من كتابة ملفات .pyc وتحديث المخرجات فوراً
+# منع Python من كتابة ملفات .pyc وتعطيل الـ buffering لظهور اللوجات فوراً
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# تحديد مجلد العمل داخل الحاوية
-WORKDIR /app
-
-# تثبيت التبعيات الضرورية للنظام (لربط PostgreSQL)
+# تثبيت اعتماديات النظام الضرورية (لقاعدة البيانات وأدوات الـ SEO)
 RUN apt-get update && apt-get install -y \
     build-essential \
-    gettext \
     libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
+    libxml2-dev \
+    libxslt-dev \
+    gettext \
+    && apt-get clean
 
-# نسخ ملف المتطلبات وتثبيته
+# إعداد مجلد العمل
+WORKDIR /app
+
+# تثبيت مكتبات Python
 COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
-# نسخ بقية ملفات المشروع
+# نسخ ملفات المشروع
 COPY . /app/

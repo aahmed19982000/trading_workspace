@@ -1,0 +1,74 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% trans "SeoTools AI Platform" %} | {% trans "Workspace" %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  </head>
+  <body class="{% if LANGUAGE_BIDI %}is-rtl{% else %}is-ltr{% endif %} workspace-body">
+    <main class="workspace-shell">
+      <section class="workspace-card">
+        <span class="brand-kicker">{% trans "Phase 1" %}</span>
+        <h1>{% trans "Workspace access is connected." %}</h1>
+        <p>
+          {% blocktrans %}
+          You have reached the current handoff point: registration and login are connected to the API,
+          and the next modules can be added on top of this flow.
+          {% endblocktrans %}
+        </p>
+
+        <div class="workspace-grid">
+          <article>
+            <h2>{% trans "Available now" %}</h2>
+            <ul>
+              <li>{% trans "Create account through /api/register/" %}</li>
+              <li>{% trans "Sign in through /api/token/" %}</li>
+              <li>{% trans "Store access and refresh tokens in the browser" %}</li>
+            </ul>
+          </article>
+
+          <article>
+            <h2>{% trans "Next later" %}</h2>
+            <ul>
+              <li>{% trans "Workspace model and multi-tenant roles" %}</li>
+              <li>{% trans "SEO tools modules and billing" %}</li>
+              <li>{% trans "Dashboard metrics and AI checker flows" %}</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="token-box">
+          <strong>{% trans "JWT access token" %}</strong>
+          <code id="token-preview">{% trans "Loading..." %}</code>
+        </div>
+
+        <div class="workspace-actions">
+          <a class="primary-btn workspace-btn" href="{% url 'login_page' %}">{% trans "Back to login" %}</a>
+          <button class="secondary-btn workspace-btn" id="clear-session">{% trans "Clear local tokens" %}</button>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const tokenPreview = document.getElementById('token-preview');
+      const clearSessionBtn = document.getElementById('clear-session');
+      const accessToken = localStorage.getItem('access');
+
+      tokenPreview.textContent = accessToken ? `${accessToken.slice(0, 48)}...` : '{% trans "No token stored yet." %}';
+
+      clearSessionBtn.addEventListener('click', () => {
+        localStorage.removeItem('access');
+        localStorage.removeItem('refresh');
+        tokenPreview.textContent = '{% trans "No token stored yet." %}';
+      });
+    </script>
+  </body>
+</html>
